@@ -6,6 +6,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Database, Shield, Zap, Code, Server, Lock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,11 +43,45 @@ export default function HomePage() {
             developers who need reliable, secure, and efficient database
             operations.
           </p>
+          <Card className="max-w-md mx-auto bg-card border-border">
+            <CardHeader>
+              <CardTitle className="text-card-foreground">
+                Request Beta Access
+              </CardTitle>
+              <CardDescription className="text-muted-foreground">
+                Join our beta testing program. Enter your Play Store Gmail ID to
+                get early access.
+              </CardDescription>
+              <form className="space-y-4 mt-4">
+                <div>
+                  <Label htmlFor="gmail" className="text-card-foreground">
+                    Play Store Gmail ID
+                  </Label>
+                  <Input
+                    id="gmail"
+                    type="email"
+                    placeholder="your.email@gmail.com"
+                    className="mt-1"
+                    required
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+                >
+                  Request Access
+                </Button>
+              </form>
+            </CardHeader>
+          </Card>
+
           <Button
             size="lg"
             className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
           >
-            Download T2client
+            <Link href="https://play.google.com/apps/testing/com.t2c.mongo_compas">
+              Download T2client
+            </Link>
           </Button>
         </div>
 
@@ -138,6 +174,148 @@ export default function HomePage() {
           </Card>
         </div>
 
+        {/* App Screenshots Section */}
+        <div className="mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">
+              See T2client in Action
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
+              Experience the clean, intuitive mobile interface designed for
+              efficient MongoDB database management on Android
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {/* Main Dashboard Screenshot */}
+            <div className="flex flex-col items-center">
+              <Card className="bg-card border-border overflow-hidden w-full max-w-[280px]">
+                <div className="aspect-[9/16] bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+                  <img
+                    src="/8.jpg"
+                    alt="T2client Android app main dashboard"
+                    className="w-full h-full object-cover rounded-t-lg"
+                  />
+                </div>
+                <CardHeader className="p-4">
+                  <CardTitle className="text-card-foreground text-sm">
+                    Main Dashboard
+                  </CardTitle>
+                  <CardDescription className="text-muted-foreground text-xs">
+                    Manage all your MongoDB connections on your Android device
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+
+            {/* Database Explorer Screenshot */}
+            <div className="flex flex-col items-center">
+              <Card className="bg-card border-border overflow-hidden w-full max-w-[280px]">
+                <div className="aspect-[9/16] bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+                  <img
+                    src="/7.jpg"
+                    alt="Database explorer mobile interface"
+                    className="w-full h-full object-cover rounded-t-lg"
+                  />
+                </div>
+                <CardHeader className="p-4">
+                  <CardTitle className="text-card-foreground text-sm">
+                    Database Explorer
+                  </CardTitle>
+                  <CardDescription className="text-muted-foreground text-xs">
+                    Navigate databases and collections with touch-friendly
+                    interface
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+
+            {/* Query Editor Screenshot */}
+            <div className="flex flex-col items-center">
+              <Card className="bg-card border-border overflow-hidden w-full max-w-[280px]">
+                <div className="aspect-[9/16] bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+                  <img
+                    src="/13.jpg"
+                    alt="Mobile query editor with syntax highlighting"
+                    className="w-full h-full object-cover rounded-t-lg"
+                  />
+                </div>
+                <CardHeader className="p-4">
+                  <CardTitle className="text-card-foreground text-sm">
+                    Query Editor
+                  </CardTitle>
+                  <CardDescription className="text-muted-foreground text-xs">
+                    Write MongoDB queries with mobile-optimized editor
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+
+            {/* Document Viewer Screenshot */}
+            <div className="flex flex-col items-center">
+              <Card className="bg-card border-border overflow-hidden w-full max-w-[280px]">
+                <div className="aspect-[9/16] bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+                  <img
+                    src="/9.jpg"
+                    alt="Mobile document viewer showing JSON structure"
+                    className="w-full h-full object-cover rounded-t-lg"
+                  />
+                </div>
+                <CardHeader className="p-4">
+                  <CardTitle className="text-card-foreground text-sm">
+                    Document Viewer
+                  </CardTitle>
+                  <CardDescription className="text-muted-foreground text-xs">
+                    View and edit documents with mobile-friendly JSON interface
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+            {/* Edit Document Screenshot */}
+            <div className="flex flex-col items-center">
+              <Card className="bg-card border-border overflow-hidden w-full max-w-[280px]">
+                <div className="aspect-[9/16] bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+                  <img
+                    src="/11.jpg"
+                    alt="Mobile document viewer showing JSON structure"
+                    className="w-full h-full object-cover rounded-t-lg"
+                  />
+                </div>
+                <CardHeader className="p-4">
+                  <CardTitle className="text-card-foreground text-sm">
+                    Edit Document
+                  </CardTitle>
+                  <CardDescription className="text-muted-foreground text-xs">
+                    View and edit documents with mobile-friendly JSON interface
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+            {/* Edit Document Screenshot */}
+            <div className="flex flex-col items-center">
+              <Card className="bg-card border-border overflow-hidden w-full max-w-[280px]">
+                <div className="aspect-[9/16] bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+                  <img
+                    src="/12.jpg"
+                    alt="Mobile document viewer showing JSON structure"
+                    className="w-full h-full object-cover rounded-t-lg"
+                  />
+                </div>
+                <CardHeader className="p-4">
+                  <CardTitle className="text-card-foreground text-sm">
+                    Theme Support
+                  </CardTitle>
+                  <CardDescription className="text-muted-foreground text-xs">
+                    Light / Dark / System theme supported
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+
+            {/* dark mode screenshots */}
+          </div>
+        </div>
+
         {/* About Section */}
         <div className="bg-muted rounded-lg p-8 mb-16">
           <h2 className="text-2xl font-bold text-foreground mb-4">
@@ -168,7 +346,9 @@ export default function HomePage() {
             size="lg"
             className="bg-secondary hover:bg-secondary/90 text-secondary-foreground"
           >
-            Download Now
+            <Link href="https://play.google.com/apps/testing/com.t2c.mongo_compas">
+              Download Now
+            </Link>
           </Button>
         </div>
       </main>
