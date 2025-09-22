@@ -1,3 +1,4 @@
+"use client";
 import { Navigation } from "@/components/navigation";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,8 +12,30 @@ import { Label } from "@/components/ui/label";
 import { Database, Shield, Zap, Code, Server, Lock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function HomePage() {
+  const [email, setEmail] = useState<string | number>("");
+
+  const scriptUrl =
+    "https://script.google.com/macros/s/AKfycbz5EdD0bmjCVGbE28fZmR15-_qKnY2uTB8GjRudj4pUmyYQVBDlaQV80i5O33kdXofI/exec";
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    try {
+      await fetch(scriptUrl, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    alert("Thanks for joining! You’ll get an email confirmation soon.");
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -52,7 +75,7 @@ export default function HomePage() {
                 Join our beta testing program. Enter your Play Store Gmail ID to
                 get early access.
               </CardDescription>
-              <form className="space-y-4 mt-4">
+              <form className="space-y-4 mt-4" onSubmit={onSubmit}>
                 <div>
                   <Label htmlFor="gmail" className="text-card-foreground">
                     Play Store Gmail ID
@@ -60,9 +83,12 @@ export default function HomePage() {
                   <Input
                     id="gmail"
                     type="email"
+                    name="email"
                     placeholder="your.email@gmail.com"
                     className="mt-1"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <Button
@@ -74,6 +100,10 @@ export default function HomePage() {
               </form>
             </CardHeader>
           </Card>
+          <br />
+                    <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-pretty">
+            OR
+          </p>
 
           <Button
             size="lg"
